@@ -1,0 +1,36 @@
+/* Şarkı listesi */
+.song {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: #f9e6eb;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .15s;
+}
+.song:hover { background: #f6d9e1; transform: translateX(3px); }
+.song:focus-visible { outline: 3px solid #e0185f; outline-offset: 2px; }
+.song.playing { background: #fbd3df; border-color: #e0185f; }
+
+.song .icon { font-size: 30px; line-height: 1; width: 34px; text-align: center; }
+.song .info { flex: 1; }
+.song .title { display: block; font-size: 18px; font-weight: 600; color: #8a1c4b; }
+.song .artist { display: block; margin-top: 4px; font-size: 14px; color: #8e7a82; }
+.song .state { font-size: 22px; color: #e0185f; }
+
+/* Çalarken nota hafifçe zıplasın */
+.song.playing .icon { animation: bounce .8s ease-in-out infinite; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .song.playing .icon { animation: none; }
+  .song { transition: none; }
+}
